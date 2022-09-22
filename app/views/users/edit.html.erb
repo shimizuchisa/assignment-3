@@ -1,2 +1,27 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <h1>User info</h1>
+
+    <%= form_with model: @user, url: "/books/", method: :patch do |f| %>
+    <div class="field">
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= f.label :image, "Image" %>
+      <%= f.image_field :profile_image %>
+    </div>
+
+    <div class="field">
+      <%= f.label :introduction, "Introduction" %>
+      <%= f.text_area :introduction %>
+    </div>
+
+    <%= f.submit "Update User", class: "btn btn-secondary" %>
+    <% end %>
+
+  </div>
+</div>
+
+

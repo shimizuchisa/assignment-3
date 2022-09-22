@@ -1,2 +1,18 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<!--book-show-->
+<div class="container">
+  <div class="row">
+    <div class="side_bar col-12 col-sm-4">
+      <h1>Book detail</h1>
+      <div class="main_bar col-sm-8">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><%= @book.title %></td>
+            <td><%= @book.body %></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
