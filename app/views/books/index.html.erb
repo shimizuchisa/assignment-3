@@ -1,10 +1,11 @@
-<!--book-index-->
+<!--Bookers2-book-index-->
 <div class="container">
   <div class="row">
     <div class="side_bar col-12 col-sm-4">
-        <!--userinfo 部分テンプレート呼び出し-->
+        <!--userinfo 部分テンプレート呼び出し--
         <h2 class="mt-3">New book</h2>
-        <%= form_with model: @book, url: '/books', method: :post do |f| %>
+        <%= form_with model: @book, url: books_path, method: :post do |f| %>
+        <!--urlはform_with modelのあるページを指定-->
         <div class="field">
           <%= f.label :title %><br>
           <%= f.text_field :title %>
@@ -26,12 +27,19 @@
       <table class="table">
         <tbody>
           <tr>
+            <th></th><!--profile_imageの部分-->
             <th>Title</th>
             <th>Opinion</th>
           </tr>
           <% @books.each do |book| %>
           <tr>
-            <td><%= book.title %></td>
+            <td><%= image_tag book.user.get_profile_image(100, 100) %></td>
+            <!--image_tag、サイズの引数を忘れない！-->
+            <td>
+              <%= link_to(book_path(book.id)) do %>
+                <%= book.title %>
+              <% end %>
+            </td>
             <td><%= book.body %></td>
           </tr>
           <% end %>

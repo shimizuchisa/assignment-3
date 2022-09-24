@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   def index
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
     @users = User.all
   end
 
   def show
-    @user = User.find(current_user_params[:id])
-    @book = Book.new
-    @books = current_user.books.all
+    @user = User.find(params[:id])
+    @books = @user.books
+    #@user.booksで、@user(showの1行目)の投稿を取得
   end
 
   def edit

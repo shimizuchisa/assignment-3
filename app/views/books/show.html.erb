@@ -1,18 +1,41 @@
-<!--book-show-->
+<!--Bookers2-book-show-->
 <div class="container">
   <div class="row">
     <div class="side_bar col-12 col-sm-4">
-      <h1>Book detail</h1>
-      <div class="main_bar col-sm-8">
+        <!--userinfo 部分テンプレート呼び出し-->
+        <!--newbook 部分テンプレート呼び出し-->
+    </div>
+
+    <div class="main_bar col-sm-8">
+      <h2>Book detail</h2>
       <table class="table">
         <tbody>
           <tr>
-            <td><%= @book.title %></td>
+            <td>
+              <p><%= image_tag @book.user.get_profile_image(100, 100) %></p>
+              <p>
+                <%= link_to user_path(@user.id) do %>
+                  <%=  @user.name %>
+                <% end %>
+              </p>
+            </td>
+            <!--image_tag、サイズの引数を忘れない！-->
+            <td>
+              <%= link_to book_path(@book.id) do %>
+                <%= @book.title %>
+              <% end %>
+            </td>
             <td><%= @book.body %></td>
+            <td>
+              <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-success btn-sm" %>
+            </td>
+            <td>
+              <%= link_to "Destroy", book_path(@book.id), method: :delete, class: "btn btn-danger btn-sm" %>
+            </td>
           </tr>
         </tbody>
       </table>
-
     </div>
+
   </div>
 </div>

@@ -1,2 +1,20 @@
-<h1>Books#edit</h1>
-<p>Find me in app/views/books/edit.html.erb</p>
+<!--Bookers2-books-edit-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 ">
+      <h2>Editting book</h2>
+      <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
+      <div class="field">
+        <%= f.label :title, "Title" %><br>
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
+        <%= f.label :body, "Opinion" %><br>
+        <%= f.text_area :body %>
+      </div>
+        <%= f.submit "Update Book", class: "btn btn-success btn-sm" %>
+      <% end %>
+    </div>
+  </div>
+</div>

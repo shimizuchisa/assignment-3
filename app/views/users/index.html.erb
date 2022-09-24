@@ -1,13 +1,34 @@
-<!--user-index-->
+<!--Bookers2-user-index-->
 <div class="container">
   <div class="row">
     <div class="side_bar col-12 col-sm-4">
       <!--userinfo 部分テンプレート呼び出し-->
-      <%= render 'info', user: @user %>
+      <!--%= render 'info', user: @user %-->
 
+      <!--newbook 部分テンプレート呼び出し-->
+      <!--%= render 'new', book: @book %-->
+    </div>
 
-
-
+    <div class="main_bar col-sm-8">
+      <h2>Users</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th></th>
+          </tr>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= image_tag user.get_profile_image(100, 100) %></td>
+            <td><%= user.name %></td>
+            <td>
+              <a><%= link_to "show", user_path(user.id) %></a>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
