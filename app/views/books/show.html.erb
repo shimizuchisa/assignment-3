@@ -1,12 +1,14 @@
 <!--Bookers2-book-show-->
 <div class="container">
   <div class="row">
-    <div class="side_bar col-12 col-sm-4">
+    <div class="col-md-3">
         <!--userinfo 部分テンプレート呼び出し-->
+        <%= render 'users/info', user: @user %>
         <!--newbook 部分テンプレート呼び出し-->
+        <%= render 'new', book: @newbook %>
     </div>
 
-    <div class="main_bar col-sm-8">
+    <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
         <tbody>

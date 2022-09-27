@@ -1,15 +1,15 @@
 <!--Bookers2-user-show-->
 <div class="container">
   <div class="row">
-    <div class="side_bar col-12 col-sm-4">
+    <div class="col-md-3">
       <!--userinfo 部分テンプレート呼び出し-->
-      <!--%= render 'info', user: @user %-->
+      <%= render 'info', user: @user %>
 
       <!--newbook 部分テンプレート呼び出し-->
-      <!--%= render 'new', book: @book %-->
+      <%= render 'books/new', book: @newbook %>
     </div>
 
-    <div class="main_bar col-sm-8">
+    <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table">
         <tbody>
@@ -22,9 +22,12 @@
           <tr>
             <td><%= image_tag book.user.get_profile_image(100, 100) %></td>
             <!--image_tag、サイズの引数を忘れない！-->
-            <td><%= book.title %></td>
-            <td><%= book.body %>
+            <td>
+              <%= link_to(book_path(book.id)) do %>
+                <%= book.title %>
+              <% end %>
             </td>
+            <td><%= book.body %></td>
           </tr>
           <% end %>
         </tbody>

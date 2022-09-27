@@ -1,21 +1,29 @@
 #Bookers2
 class BooksController < ApplicationController
   def index
-    @book = Book.new
+    @newbook = Book.new
     @books = Book.all
+    @user = User.find(current_user.id)
   end
 
   def create
-    @book = Book.new(book_params)
+    @newbook = Book.new(book_params)
     #カラムにuser_idを追加しているので、下記が必要
-    @book.user_id = current_user.id
-    @book.save
-    redirect_to book_path(@book.id)
+    @newbook.user_id = current_user.id
+    @newbook.save
+    redirect_to book_path(@newbook.id)
+
+    # def create
+      # current_user.posts.create(create_params)
+      # redirect_to :root
+    # end
+
   end
 
   def show
     @book = Book.find(params[:id])
     @user = @book.user
+    @newbook = Book.new
   end
 
   def edit
