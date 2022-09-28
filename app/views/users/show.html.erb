@@ -1,5 +1,9 @@
 <!--Bookers2-user-show-->
-<div class="container">
+<main>
+  <% flash.each do |key, value| %>
+    <%= value %>
+  <% end %>
+<div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
       <!--userinfo 部分テンプレート呼び出し-->
@@ -35,3 +39,4 @@
     </div>
   </div>
 </div>
+</main>

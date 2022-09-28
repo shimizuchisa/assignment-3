@@ -1,6 +1,17 @@
 <!--Bookers2-book-index-->
 <main>
-  <div class="container">
+  <div class="container px-5 px-sm-0">
+    <% if @newbook.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@newbook.errors.count, "error") %>prohibited this obj from being saved:</h2>
+      <ul>
+      <% @newbook.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    <% end %>
+
     <div class="row">
       <div class="col-md-3">
         <!--userinfo 部分テンプレート呼び出し-->
