@@ -15,7 +15,7 @@
     <div class="row">
       <div class="col-md-3">
         <!--userinfo 部分テンプレート呼び出し-->
-        <%= render 'users/info', user: @user %>
+        <%= render 'users/info', user: current_user %>
 
         <!--newbook 部分テンプレート呼び出し-->
         <%= render 'new', book: @newbook %>
@@ -23,7 +23,7 @@
 
       <div class="col-md-8 offset-md-1">
         <h2>Books</h2>
-        <table class="table">
+        <table class="table table-hover">
           <tbody>
             <tr>
               <th></th><!--profile_imageの部分-->
@@ -32,7 +32,11 @@
             </tr>
             <% @books.each do |book| %>
             <tr>
-              <td><%= image_tag book.user.get_profile_image(100, 100) %></td>
+              <td>
+                <%= link_to(user_path(book.user.id)) do %>
+                  <%= image_tag book.user.get_profile_image(100, 100) %>
+                <% end %>
+              </td>
               <!--image_tag、サイズの引数を忘れない！-->
               <td>
                 <%= link_to(book_path(book.id)) do %>
